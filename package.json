@@ -1,0 +1,36 @@
+{
+  "name": "api-padaria-brunch",
+  "version": "0.0.1",
+  "description": "API Rest em typescript baseada em NODE",
+  "keywords": [
+    "typescript",
+    "node",
+    "rest",
+    "express",
+    "mysql",
+    "mysql2",
+    "bcrypt"
+  ],
+  "license": "ISC",
+  "author": "Isaías Cireli Mezzari",
+  "type": "module",
+  "main": "dist/app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/app.ts"
+  },
+  "dependencies": {
+    "@types/node": "^25.5.0",
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mysql2": "^3.20.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.6"
+  }
+}
