@@ -40,6 +40,10 @@ export const userRepository = {
             [user.nome, user.username, user.email, hashedPassword]
         );
 
+        if(!result.insertId){
+            throw new Error()
+        }
+
         return result.insertId;
     },
 
