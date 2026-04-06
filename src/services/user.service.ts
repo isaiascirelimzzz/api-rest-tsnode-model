@@ -1,5 +1,6 @@
 import { userRepository } from "../repository/user.repository.js";
 import type { AddUserDTO, UpdateUserDTO, UserResponseDTO } from "../dtos/user.dto.js";
+import { AppError } from "../errors/appError.js";
 
 export class UserService{
     async getAll():Promise<UserResponseDTO[]>{
@@ -10,7 +11,7 @@ export class UserService{
         const user = await userRepository.findById(id);
 
         if(!user){
-            throw new Error(`Usuário não encontrado`);
+            throw new AppError(`Usuário não encontrado`, 404);
         }
 
         return user;
@@ -20,7 +21,7 @@ export class UserService{
         const created = await userRepository.add(user);
 
         if(!created){
-            throw new Error(`Usuário não adicionado`)
+            throw new AppError(`Usuário não adicionado`, 405)
         }
 
         return {
@@ -33,9 +34,8 @@ export class UserService{
         const updated = await userRepository.update(user, id);
 
         if(!updated){
-            throw new Error(`Usuário não encontrado`);
+            throw new AppError(`Usuário não encontrado`, 404);
         }
-
         return {message: `Usuário atualizado`};
     }
 
@@ -43,7 +43,7 @@ export class UserService{
         const deleted = await userRepository.delete(id);
         
         if(!deleted){
-            throw new Error(`Usuário não encontrado`);
+            throw new AppError(`Usuário não encontrado`, 404);
         }
 
         return{message: `Usuário deletado`}
